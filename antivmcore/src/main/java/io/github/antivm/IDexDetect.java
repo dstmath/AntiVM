@@ -23,4 +23,14 @@
  *
  */
 
-include ':app', ':antivmcore'
+package io.github.antivm;
+
+import android.content.Context;
+
+/**
+ * Created by bunnyblue on 4/22/17.
+ */
+
+public abstract class IDexDetect {
+    public abstract void dexDetect(Context context);
+}

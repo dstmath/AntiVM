@@ -23,4 +23,37 @@
  *
  */
 
-include ':app', ':antivmcore'
+package io.github.antivm.impl;
+
+import io.github.antivm.IPackageFilter;
+
+/**
+ * Created by bunnyblue on 4/22/17.
+ */
+
+public class PackageFilter extends IPackageFilter {
+    private static final String SYSTEM_PATH = "/system/";
+    private static final String APP_PATH = "/data/app/";
+    private static final String APP_MULTI_PATH = "/data/user/";
+
+    @Override
+    public String findPackageNoSystem(String pkgPath) {
+        if (pkgPath.startsWith(SYSTEM_PATH)) {
+            return null;
+        } else if (pkgPath.startsWith(APP_PATH)) {
+            pkgPath = pkgPath.replaceAll(APP_PATH, "");
+
+
+            return pkgPath.substring(0, pkgPath.indexOf("-"));
+        } else if (pkgPath.startsWith(APP_MULTI_PATH)) {
+            pkgPath = pkgPath.replaceAll(APP_MULTI_PATH, "");
+
+            pkgPath = pkgPath.substring(pkgPath.indexOf("/") + 1);
+            pkgPath = pkgPath.substring(0, pkgPath.indexOf("/"));
+            // pkgList.add(pkgPath);
+            return pkgPath;
+
+        }
+        return null;
+    }
+}

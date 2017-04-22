@@ -23,4 +23,45 @@
  *
  */
 
-include ':app', ':antivmcore'
+package io.github.vmBoy;
+
+/**
+ * Created by bunnyblue on 4/20/17.
+ */
+
+public class Who {
+    static {
+        System.loadLibrary("antivm");
+    }
+
+    /**
+     * TODO need impl
+     * check map file
+     *
+     */
+    public static native String map();
+
+    /**
+     * try delete apk file,if run in vm,should be deleted
+     *
+     * @param path
+     * @return unlink status
+     */
+    public static native int unlink(String path);
+
+    /**
+     * if apk owner is not system,return -1 else reurn 0
+     * check apk file permission
+     *
+     * @param path
+     */
+    public native static int permission(String path);
+
+    /**
+     * TODO impl next version
+     * dump your app runtime,you can send runtime data to your server
+     *
+     * @return info
+     */
+    public native static String dumpEnvStatus();
+}

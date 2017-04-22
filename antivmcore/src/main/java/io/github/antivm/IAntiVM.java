@@ -23,4 +23,21 @@
  *
  */
 
-include ':app', ':antivmcore'
+package io.github.antivm;
+
+import android.content.Context;
+
+/**
+ * Created by bunny on 07/04/2017.
+ */
+
+public abstract class IAntiVM {
+    /**
+     * vm detect status
+     *
+     * @param context
+     * @return true =run on vm ,flase=you should ignore
+     */
+    public abstract boolean antiVM(Context context);
+
+}

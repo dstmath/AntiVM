@@ -23,4 +23,36 @@
  *
  */
 
-include ':app', ':antivmcore'
+package io.github;
+
+import android.content.Context;
+import android.os.Process;
+
+import io.github.antivm.IAntiVM;
+import io.github.antivm.impl.AntiVMCloner;
+import io.github.antivm.impl.AntiVMUninstalled;
+
+/**
+ * Created by bunny on 07/04/2017.
+ */
+
+public class AntiVMImplDefault extends IAntiVM {
+
+    @Override
+    public boolean antiVM(Context context) {
+        AntiVMUninstalled antiVMUninstalled = new AntiVMUninstalled();
+        if (antiVMUninstalled.antiVM(context)) {
+            //DO Crash
+            Process.killProcess(Process.myPid());
+            return true;
+        }
+        AntiVMCloner antiVMCloner = new AntiVMCloner();
+        if (antiVMCloner.antiVM(context)) {
+            //DO Crash
+            Process.killProcess(Process.myPid());
+            return true;
+        }
+
+        return false;
+    }
+}

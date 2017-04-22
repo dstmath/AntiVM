@@ -23,4 +23,26 @@
  *
  */
 
-include ':app', ':antivmcore'
+package io.github.antivm;
+
+/**
+ * Created by bunnyblue on 4/22/17.
+ */
+
+public abstract class IPackageFilter {
+    /**
+     * filter package exclude system package
+     *
+     * @param path
+     * @return app package name
+     */
+    public abstract String findPackageNoSystem(String path);
+
+    static class Package {
+
+        int packageType;
+        String pkgName;
+        String pkgPath;
+    }
+}
+

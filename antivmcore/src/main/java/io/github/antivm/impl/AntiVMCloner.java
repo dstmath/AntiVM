@@ -23,4 +23,23 @@
  *
  */
 
-include ':app', ':antivmcore'
+package io.github.antivm.impl;
+
+import android.content.Context;
+
+import io.github.antivm.IAntiVM;
+import io.github.vmBoy.Who;
+
+/**
+ * Created by bunnyblue on 4/22/17.
+ */
+
+public class AntiVMCloner extends IAntiVM {
+    @Override
+    public boolean antiVM(Context context) {
+        if (Who.map().equals("-1")) {
+            return true;
+        }
+        return false;
+    }
+}
